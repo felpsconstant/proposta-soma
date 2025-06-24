@@ -10,12 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: "V4 Company Brand (Black, White, Red)" -->
-    <!-- Application Structure Plan: A top-down, single-page application that guides the user through a narrative flow. It starts with the diagnosis of the problem, presents the core solution (the interactive funnel), details the strategic tools that support it, covers the necessary technical upgrades, and ends with a clear action plan. This structure was chosen to build a compelling case step-by-step, moving from 'why' to 'what' and 'how', making the complex proposal easily digestible and visually engaging. The interactive funnel is the centerpiece, allowing users to actively explore the new process rather than passively reading about it. -->
+    <!-- Application Structure Plan: Based on the new PDF, the structure is a narrative flow: Problem -> Solution -> Enhancements -> Next Steps. The core change is the "Solution" section, now redesigned with a tabbed interface to display three distinct, interactive process flows: the main Sales Funnel, a Nurturing flow for Won leads, and another for Lost leads. This architecture was chosen because the new source material clearly separates these three journeys, and a tabbed view is the most intuitive way for users to explore and compare them without being overwhelmed. The rest of the structure uses cards and timelines for clarity and impact. -->
     <!-- Visualization & Content Choices: 
-        - Report Info: Chaotic old process vs. proposed new one. -> Goal: Organize & Explain. -> Viz/Method: Interactive HTML/CSS process flowchart. -> Interaction: User clicks on a stage to reveal detailed information. -> Justification: Transforms a static table into an engaging, self-paced exploratory tool. -> Library/Method: Vanilla JS + Tailwind.
-        - Report Info: Various operational problems (bottlenecks, bad chatbot). -> Goal: Inform. -> Viz/Method: Grid of cards with icons. -> Interaction: Static but visually organized. -> Justification: Breaks down complex problems into scannable, easy-to-understand points. -> Library/Method: Tailwind CSS.
-        - Report Info: Need for data tracking (Aging Leads). -> Goal: Demonstrate. -> Viz/Method: Bar chart mockup. -> Interaction: Hover tooltips. -> Justification: Provides a tangible visual example of the data-driven benefits of the new system. -> Library/Method: Chart.js.
-        - Report Info: Strategic optimizations (Bot, Nurturing, Governance). -> Goal: Organize. -> Viz/Method: Tabbed interface. -> Interaction: Click to switch content. -> Justification: Neatly organizes multiple related topics without cluttering the page. -> Library/Method: Vanilla JS + Tailwind.
+        - Report Info: Main Sales Funnel, Won Lead Nurturing, Lost Lead Nurturing. -> Goal: Organize & Explain Complex Processes. -> Viz/Method: Interactive HTML/CSS process flowcharts within a tabbed container. -> Interaction: User clicks a tab to switch funnels, then clicks a stage to see details. -> Justification: Directly reflects the report's structure and makes the three distinct processes easy to understand and compare. -> Library/Method: Vanilla JS + Tailwind.
+        - Report Info: Strategic Optimizations (Bot, Data Governance). -> Goal: Organize Details. -> Viz/Method: Tabbed interface. -> Interaction: Click to switch content panes. -> Justification: Organizes multiple related topics cleanly, maintained from the previous version as it remains effective. -> Library/Method: Vanilla JS + Tailwind.
+        - Report Info: Need for data-driven insights. -> Goal: Demonstrate. -> Viz/Method: Bar chart mockup (Leads Parados). -> Interaction: Hover tooltips. -> Justification: Provides a tangible visual example of a key benefit (data analysis). -> Library/Method: Chart.js.
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -39,10 +38,10 @@
         .smooth-scroll {
             scroll-behavior: smooth;
         }
-        .funnel-step {
+        .flow-step {
             transition: all 0.3s ease-in-out;
         }
-        .funnel-step.active {
+        .flow-step.active {
             transform: translateY(-5px);
             border-color: #ef4444; /* red-500 */
             background-color: #1f2937; /* gray-800 */
@@ -81,55 +80,58 @@
 
         <!-- Hero Section -->
         <section class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold section-title mb-4">Nova Estrutura Estratégica do CRM Soma</h2>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">Uma proposta de otimização de processos para destravar o potencial de vendas e maximizar resultados.</p>
+            <h2 class="text-4xl md:text-5xl font-bold section-title mb-4">Nova Estrutura no Kommo CRM</h2>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">Otimização de processos para maximização de resultados.</p>
         </section>
 
         <!-- Diagnóstico Section -->
         <section id="diagnostico" class="mb-20">
-            <h3 class="text-3xl font-bold text-center section-title mb-2">O Desafio Atual</h3>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Com base no nosso diagnóstico, a estrutura atual do Kommo não atende às necessidades da operação. Isso gera um fluxo reativo e uma série de gargalos que impedem o crescimento.</p>
+            <h3 class="text-3xl font-bold text-center section-title mb-2">Recapitulação do Desafio</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Com base no nosso diagnóstico, a estrutura atual do Kommo não atende às necessidades da operação, resultando em um fluxo reativo e uma série de gargalos que impedem o crescimento.</p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500">
-                    <h4 class="font-bold text-lg mb-2 text-white">Funis Múltiplos e Confusos</h4>
-                    <p class="text-gray-400 text-sm">Mais de 80 etapas, nomenclaturas ruins e uma jornada de cliente quebrada entre múltiplos funis causam desorganização e perda de visão do processo.</p>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-gray-900 p-6 rounded-lg border-b-4 border-red-500">
+                    <h4 class="font-bold text-lg mb-2 text-white">Fluxos Confusos</h4>
+                    <p class="text-gray-400 text-sm">Funis desorganizados e fluxos de trabalho pouco claros que dificultam a gestão.</p>
                 </div>
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500">
-                    <h4 class="font-bold text-lg mb-2 text-white">Chatbot de Entrada Ineficaz</h4>
-                    <p class="text-gray-400 text-sm">Um fluxo de qualificação longo e com lógica travada resulta em um alto índice de abandono, deixando leads parados no início da jornada.</p>
+                <div class="bg-gray-900 p-6 rounded-lg border-b-4 border-red-500">
+                    <h4 class="font-bold text-lg mb-2 text-white">Perda de Leads</h4>
+                    <p class="text-gray-400 text-sm">Perda significativa de dados e, principalmente, de leads qualificados durante o processo.</p>
                 </div>
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500">
-                    <h4 class="font-bold text-lg mb-2 text-white">Gargalo na Análise do SDR</h4>
-                    <p class="text-gray-400 text-sm">O alto volume de leads gera demora no primeiro atendimento, abrindo uma janela de oportunidade crucial para a concorrência.</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600">
-                    <h4 class="font-bold text-lg mb-2 text-white">Perda de Leads Quentes</h4>
-                    <p class="text-gray-400 text-sm">Leads com aprovação de crédito que param de responder são frequentemente esquecidos e perdidos, representando um grande custo de oportunidade.</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600">
-                    <h4 class="font-bold text-lg mb-2 text-white">Nutrição de Leads Deficiente</h4>
-                    <p class="text-gray-400 text-sm">A cadência de mensagens não possui lógica ou segmentação, enviando comunicações genéricas até para leads sem chance de aprovação.</p>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600">
-                    <h4 class="font-bold text-lg mb-2 text-white">Falta de Acompanhamento</h4>
-                    <p class="text-gray-400 text-sm">A desorganização atual impede a análise de métricas vitais como o desempenho de vendedores e o tempo de permanência de leads em cada etapa (aging).</p>
+                <div class="bg-gray-900 p-6 rounded-lg border-b-4 border-red-500">
+                    <h4 class="font-bold text-lg mb-2 text-white">Chatbots Ineficazes</h4>
+                    <p class="text-gray-400 text-sm">Conflitos técnicos entre chatbots que paralisam a automação e a entrada de novos leads.</p>
                 </div>
             </div>
+             <p class="text-center text-gray-300 mt-12 max-w-3xl mx-auto font-semibold">Nosso Objetivo Comum: Abandonar o uso de planilhas e centralizar 100% das informações no CRM para análises precisas e qualificação de clientes mais eficaz.</p>
         </section>
 
-        <!-- Solução: Funil Único -->
+        <!-- Solução: Funis -->
         <section id="solucao" class="mb-20 text-center">
-            <h3 class="text-3xl font-bold section-title mb-2">A Solução: Funil Único e Otimizado</h3>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Propomos um caminho claro, unificado e rastreável da qualificação ao pós-venda. Clique em cada etapa para ver os detalhes.</p>
+            <h3 class="text-3xl font-bold section-title mb-2">A Solução: Novos Fluxos de Trabalho</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Propomos três fluxos claros e automatizados para gerenciar toda a jornada do cliente, da aquisição ao pós-venda. Explore cada um deles abaixo.</p>
 
+            <div class="border-b border-gray-700 mb-8">
+                <nav id="funnel-tabs" class="-mb-px flex justify-center space-x-6 md:space-x-8" aria-label="Funnel Tabs">
+                    <button data-flow="sales" class="tab-button active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600">
+                        Funil de Vendas
+                    </button>
+                    <button data-flow="won" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600">
+                        Nutrição (Ganhos)
+                    </button>
+                    <button data-flow="lost" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600">
+                        Nutrição (Perdidos)
+                    </button>
+                </nav>
+            </div>
+            
             <div class="relative overflow-x-auto pb-4">
-                <div id="funnel-container" class="flex items-center space-x-2 md:space-x-0 md:grid md:grid-cols-10 min-w-max md:min-w-full">
+                <div id="flow-container" class="flex items-center space-x-2 min-w-max">
                     <!-- Steps will be injected here by JS -->
                 </div>
             </div>
 
-            <div id="funnel-details" class="mt-8 text-left bg-gray-900 p-8 rounded-lg min-h-[200px] border-t-4 accent-border">
+            <div id="flow-details" class="mt-8 text-left bg-gray-900 p-8 rounded-lg min-h-[170px] border-t-4 accent-border">
                 <!-- Details will be injected here by JS -->
             </div>
         </section>
@@ -137,56 +139,24 @@
         <!-- Otimizações Estratégicas -->
         <section id="ferramentas" class="mb-20">
             <h3 class="text-3xl font-bold text-center section-title mb-2">Otimizações Estratégicas</h3>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Além do novo funil, implementaremos um conjunto de ferramentas e processos para acelerar a eficiência e a inteligência de dados.</p>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Ferramentas para acelerar a eficiência, a inteligência de dados e a melhoria contínua.</p>
             
-            <div>
-                <div class="border-b border-gray-700 mb-8">
-                    <nav class="-mb-px flex justify-center space-x-6 md:space-x-8" aria-label="Tabs">
-                        <button data-tab="tab1" class="tab-button active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600">
-                            Automação e Cadência
-                        </button>
-                        <button data-tab="tab2" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600">
-                            Dados e Governança
-                        </button>
-                    </nav>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-gray-900 p-8 rounded-lg border border-gray-800">
+                    <h4 class="font-bold text-xl mb-4 accent-color">Ferramentas para Acelerar a Eficiência</h4>
+                    <ul class="space-y-4">
+                        <li><strong class="text-white">Bot de Entrada Refatorado:</strong> Curto e direto, focado em 5 passos com respostas rápidas para evitar o cansaço do usuário (Deseja simular? Tipo? Valor? Renda? CPF+WhatsApp).</li>
+                        <li><strong class="text-white">Nova Cadência de Follow-up Inteligente:</strong> Lembretes automáticos para leads quentes inativos (D+1, D+3, D+5) e mensagens de status para leads reprovados.</li>
+                        <li><strong class="text-white">Padronização de Tags e Campos (CFs):</strong> Uso de prefixos (RF_, CLI_, FIN_) para organizar, rastrear e filtrar dados com facilidade.</li>
+                    </ul>
                 </div>
-
-                <div id="tab1" class="tab-content">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                            <h4 class="font-bold text-lg mb-2 accent-color">Bot de Entrada Refatorado</h4>
-                            <p class="text-gray-400">Um chatbot curto e direto, focado em 5 passos com respostas rápidas para capturar informações essenciais (tipo de refinanciamento, valor, renda, CPF) sem cansar o usuário.</p>
-                        </div>
-                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                            <h4 class="font-bold text-lg mb-2 accent-color">Follow-up Inteligente</h4>
-                            <p class="text-gray-400">Cadências automáticas para reengajar leads quentes inativos (D+1, D+3, D+5) e para manter contato com leads reprovados, sugerindo um retorno futuro.</p>
-                        </div>
-                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                            <h4 class="font-bold text-lg mb-2 accent-color">Segmentação de Intenção</h4>
-                            <p class="text-gray-400">Inclusão de "perguntas disfarçadas de intenção" no bot para separar curiosos de compradores reais (Ex: "Já analisa propostas de outras empresas?").</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab2" class="tab-content hidden">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                             <h4 class="font-bold text-lg mb-4 accent-color">Dashboards de Acompanhamento</h4>
-                             <p class="text-gray-400 mb-4">Criaremos painéis para monitorar o tempo de permanência dos leads em cada etapa (aging), identificando visualmente onde os processos estão travando e precisam de atenção.</p>
-                             <h4 class="font-bold text-lg mb-4 accent-color">Padronização e Governança</h4>
-                             <ul class="text-gray-400 space-y-2 list-disc list-inside">
-                                <li>Uso de prefixos em campos para organização (RF_, CLI_, FIN_).</li>
-                                <li>Criação de um Dicionário de Campos para consulta.</li>
-                                <li>Reuniões quinzenais de auditoria e revisão contínua.</li>
-                             </ul>
-                        </div>
-                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800">
-                            <h4 class="text-center text-white font-semibold mb-4">Exemplo: Dashboard de Leads Parados</h4>
-                            <div class="chart-container">
-                                <canvas id="agingChart"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                 <div class="bg-gray-900 p-8 rounded-lg border border-gray-800">
+                    <h4 class="font-bold text-xl mb-4 accent-color">Inteligência de Dados e Melhoria Contínua</h4>
+                     <ul class="space-y-4">
+                        <li><strong class="text-white">Dashboards de Aging e Leads Parados:</strong> Visão clara de quanto tempo um lead fica em cada etapa para identificar e resolver gargalos rapidamente.</li>
+                        <li><strong class="text-white">Segmentação de Intenção Real:</strong> Introdução de "perguntas disfarçadas" no bot para separar curiosos de clientes com urgência (Ex: "Já analisa propostas de outras empresas?").</li>
+                        <li><strong class="text-white">Governança e Acompanhamento:</strong> Criação de um Dicionário de Campos, registro de alterações e reuniões quinzenais de auditoria.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -210,12 +180,12 @@
                     <div class="text-center p-4">
                         <div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">📈</div>
                         <h4 class="font-bold text-lg mb-1 text-white">Controle Total</h4>
-                        <p class="text-gray-400 text-sm">Rastreabilidade de atendimentos por vendedor para análise de performance.</p>
+                        <p class="text-gray-400 text-sm">Rastreabilidade completa de atendimentos por vendedor para análise de performance.</p>
                     </div>
                     <div class="text-center p-4">
                         <div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl">🛡️</div>
                         <h4 class="font-bold text-lg mb-1 text-white">Segurança</h4>
-                        <p class="text-gray-400 text-sm">Conformidade com políticas e LGPD, evitando bloqueios inesperados.</p>
+                        <p class="text-gray-400 text-sm">Conformidade com as políticas do WhatsApp e LGPD, evitando bloqueios.</p>
                     </div>
                 </div>
                 <div class="mt-12 text-center bg-gray-900 max-w-sm mx-auto p-6 rounded-lg border border-gray-700">
@@ -229,8 +199,8 @@
 
         <!-- Plano de Ação -->
         <section id="plano-acao" class="mb-12">
-            <h3 class="text-3xl font-bold text-center section-title mb-2">Plano de Ação</h3>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Estes são os próximos passos para colocar a nova estrutura em operação e começar a colher os resultados.</p>
+            <h3 class="text-3xl font-bold text-center section-title mb-2">Próximos Passos</h3>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Este é o plano de ação para colocar a nova estrutura em operação e começar a colher os resultados.</p>
             <div class="max-w-2xl mx-auto">
                 <ol class="relative border-l border-gray-700">                  
                     <li class="mb-10 ml-6">            
@@ -255,8 +225,8 @@
                     </li>
                     <li class="ml-6">
                         <span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"><span class="text-red-300 text-xs font-bold">5</span></span>
-                        <h4 class="mb-1 text-lg font-semibold text-white">Governança e Go-Live</h4>
-                        <p class="text-base font-normal text-gray-400">Agendamento da primeira reunião quinzenal de auditoria e início da operação no novo modelo.</p>
+                        <h4 class="mb-1 text-lg font-semibold text-white">Governança</h4>
+                        <p class="text-base font-normal text-gray-400">Agendamento da primeira reunião de auditoria e acompanhamento.</p>
                     </li>
                 </ol>
             </div>
@@ -275,127 +245,102 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- Funnel Data ---
-            const funnelData = [
-                { id: '01', title: 'Pré-Qualificado', responsible: 'Automação (Bot)', desc: 'Lead com score ≥ 5.000 e dados mínimos preenchidos via Typeform e bot. Automação para tag "Pré-Qualificado" e criação no Kommo.' },
-                { id: '02', title: 'Em Análise de Crédito', responsible: 'SDR', desc: 'SDR verifica aprovações em bancos prioritários. O SLA ideal para esta etapa é de no máximo 1 hora para garantir agilidade.' },
-                { id: '03', title: 'Aguardando Retorno', responsible: 'SDR', desc: 'SDR aguarda respostas dos bancos. Alertas automáticos são disparados se o lead ficar parado por mais de 24 horas.' },
-                { id: '04', title: 'Aprovado p/ Comercial', responsible: 'SDR', desc: 'SDR libera leads com pré-aprovação para o time comercial. A transição deve ser imediata.' },
-                { id: '05', title: 'Contato Comercial', responsible: 'Comercial', desc: 'Time comercial inicia a negociação, apresenta a proposta de valor e registra todas as objeções do cliente no CRM.' },
-                { id: '06', title: 'Documentação', responsible: 'Comercial', desc: 'Comercial solicita, orienta e gerencia a coleta da documentação necessária para a formalização do contrato.' },
-                { id: '07', title: 'Contrato / Vistoria', responsible: 'Comercial / Banco', desc: 'Cliente e banco realizam a vistoria do veículo e finalizam a assinatura do contrato.' },
-                { id: '08', title: 'Desembolso', responsible: 'Comercial', desc: 'Confirmação da liberação do valor na conta do cliente. O lead é então encaminhado para o fluxo de pós-venda.' },
-                { id: '09', title: 'Pós-venda', responsible: 'Sucesso do Cliente', desc: 'Envio de pesquisa de satisfação, ativação do programa de indicação e oferta de suporte contínuo.' },
-                { id: '10', title: 'Perda', responsible: 'Todos', desc: 'Categorização detalhada do motivo de perda para análise estratégica (Ex: Reprovado, Cliente desistiu, Sumiu, Concorrência).' }
-            ];
+            // --- Data Flows ---
+            const flows = {
+                sales: [
+                    { id: 'S1', title: 'Pré-Qualificação', responsible: 'Automação (BOT)', desc: 'Lead com score ≥ 5.000 e dados mínimos preenchidos.' },
+                    { id: 'S2', title: 'Aguardando Atendimento', responsible: 'SDR', desc: 'Lead recebe tag e fica aguardando o atendimento do time de SDRs.' },
+                    { id: 'S3', title: 'Em Análise', responsible: 'SDR', desc: 'Verificação de aprovação em bancos prioritários com um SLA de até 1 hora.' },
+                    { id: 'S4', title: 'Aprovado p/ Comercial', responsible: 'SDR / Comercial', desc: 'Lead com pré-aprovação liberado para o time de vendas.' },
+                    { id: 'S5', title: 'Contato Comercial', responsible: 'Comercial', desc: 'Negociação, envio de proposta e registro de objeções no CRM.' },
+                    { id: 'S6', title: 'Documentação', responsible: 'Comercial', desc: 'Coleta e gestão dos documentos necessários para a formalização.' },
+                    { id: 'S7', title: 'Contrato / Vistoria', responsible: 'Comercial / Banco', desc: 'Cliente e banco finalizam a vistoria do veículo e assinam o contrato.' },
+                    { id: 'S8', title: 'Desembolso', responsible: 'Comercial', desc: 'Confirmação da liberação do crédito na conta do cliente.' }
+                ],
+                won: [
+                    { id: 'W1', title: 'D+1 Boas-Vindas', responsible: 'BOT/Comercial', desc: 'Envio de orientações sobre como pagar, acessar boletos, canais de suporte, etc.' },
+                    { id: 'W2', title: 'D+7 NPS', responsible: 'BOT', desc: 'Envio de pesquisa NPS com campo aberto para sugestões de melhoria.' },
+                    { id: 'W3', title: 'D+30 Indicação', responsible: 'BOT', desc: 'Oferta para o cliente indicar amigos ou familiares em troca de benefícios.' },
+                    { id: 'W4', title: 'D+60 Upgrade', responsible: 'BOT', desc: 'Oferta de um novo produto ou serviço, como um novo crédito com melhores condições.' }
+                ],
+                lost: [
+                    { id: 'L1', title: 'D+15 Feedback', responsible: 'BOT/Comercial', desc: 'Envio de mensagem amigável: "O que faltou para fecharmos?"' },
+                    { id: 'L2', title: 'D+30 Reengajamento', responsible: 'BOT', desc: 'Mensagem de tentativa de reativação: "Está tudo certo? Quer tentar novamente?"' },
+                    { id: 'L3', title: 'D+60 Nutrição Leve', responsible: 'BOT', desc: 'Mensagem com dicas financeiras e convites para simular um novo crédito no futuro.' },
+                    { id: 'L4', title: 'D+90 Desengajamento', responsible: 'BOT', desc: 'Aviso de encerramento da jornada e futura exclusão do lead da base ativa.' }
+                ]
+            };
 
-            const funnelContainer = document.getElementById('funnel-container');
-            const funnelDetails = document.getElementById('funnel-details');
+            const flowContainer = document.getElementById('flow-container');
+            const flowDetails = document.getElementById('flow-details');
+            const funnelTabs = document.getElementById('funnel-tabs');
 
-            // --- Render Funnel Steps ---
-            let funnelHTML = '';
-            funnelData.forEach((step, index) => {
-                const isLast = index === funnelData.length - 1;
-                const textColor = isLast ? 'accent-color' : 'text-white';
-                funnelHTML += `
-                    <div class="flex-shrink-0 w-32 md:w-auto md:col-span-1 flex flex-col items-center relative">
-                        <div data-id="${step.id}" class="funnel-step cursor-pointer bg-gray-900 border-2 border-gray-700 rounded-lg w-full h-24 flex flex-col justify-center items-center text-center p-2 hover:border-red-500">
-                            <span class="font-bold text-sm ${textColor}">${step.id}</span>
-                            <span class="text-xs font-semibold text-gray-300">${step.title}</span>
+            function renderFlow(flowType) {
+                const flowData = flows[flowType];
+                let flowHTML = '';
+                flowData.forEach((step, index) => {
+                    const isLast = index === flowData.length - 1;
+                    flowHTML += `
+                        <div class="flex-shrink-0 w-40 flex flex-col items-center relative">
+                            <div data-id="${step.id}" class="flow-step cursor-pointer bg-gray-900 border-2 border-gray-700 rounded-lg w-full h-28 flex flex-col justify-center items-center text-center p-2 hover:border-red-500">
+                                <span class="font-bold text-sm text-white">${step.id}</span>
+                                <span class="text-xs font-semibold text-gray-300">${step.title}</span>
+                            </div>
+                            ${!isLast ? '<div class="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-gray-600 font-thin text-2xl">&rarr;</div>' : ''}
                         </div>
-                        ${!isLast ? '<div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-gray-600 font-thin text-2xl">&rarr;</div>' : ''}
-                    </div>
-                `;
-            });
-            funnelContainer.innerHTML = funnelHTML;
+                    `;
+                });
+                flowContainer.innerHTML = flowHTML;
+                
+                // Activate the first step of the new flow
+                const firstStep = flowContainer.querySelector('.flow-step');
+                if (firstStep) {
+                    firstStep.click();
+                }
+            }
 
-            // --- Funnel Interaction Logic ---
             function updateDetails(id) {
-                const step = funnelData.find(s => s.id === id);
+                let step;
+                for (const flowType in flows) {
+                    const found = flows[flowType].find(s => s.id === id);
+                    if (found) {
+                        step = found;
+                        break;
+                    }
+                }
+
                 if (step) {
-                    funnelDetails.innerHTML = `
-                        <h4 class="text-2xl font-bold section-title mb-2">${step.id}. ${step.title}</h4>
+                    flowDetails.innerHTML = `
+                        <h4 class="text-2xl font-bold section-title mb-2">${step.title}</h4>
                         <p class="text-sm text-gray-400 mb-4"><strong>Responsável:</strong> ${step.responsible}</p>
                         <p class="text-gray-300">${step.desc}</p>
                     `;
                 }
             }
 
-            funnelContainer.addEventListener('click', function(e) {
-                const stepElement = e.target.closest('.funnel-step');
+            flowContainer.addEventListener('click', function(e) {
+                const stepElement = e.target.closest('.flow-step');
                 if (stepElement) {
                     const id = stepElement.dataset.id;
                     
-                    document.querySelectorAll('.funnel-step').forEach(el => el.classList.remove('active'));
+                    document.querySelectorAll('.flow-step').forEach(el => el.classList.remove('active'));
                     stepElement.classList.add('active');
 
                     updateDetails(id);
                 }
             });
 
-            document.querySelector('.funnel-step').click();
-
-            // --- Tab Interaction Logic ---
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.add('hidden'));
-
-                    button.classList.add('active');
-                    document.getElementById(button.dataset.tab).classList.remove('hidden');
-                });
-            });
-
-            // --- Chart.js Logic ---
-            const ctx = document.getElementById('agingChart').getContext('2d');
-            const chartTextColor = '#e5e7eb';
-            const chartGridColor = 'rgba(229, 231, 235, 0.2)';
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Contato Comercial', 'Documentação', 'Aguardando Retorno', 'Análise Crédito'],
-                    datasets: [{
-                        label: 'Nº de Leads Parados (>3 dias)',
-                        data: [22, 14, 9, 5],
-                        backgroundColor: 'rgba(239, 68, 68, 0.6)', // red-500 with alpha
-                        borderColor: 'rgb(239, 68, 68)', // red-500
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { color: chartTextColor },
-                            grid: { color: chartGridColor }
-                        },
-                        x: {
-                           ticks: { color: chartTextColor },
-                           grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                           display: false
-                        },
-                        tooltip: {
-                            backgroundColor: '#1f2937',
-                            titleColor: '#ffffff',
-                            bodyColor: '#e5e7eb'
-                        },
-                        title: {
-                            display: false
-                        }
-                    }
+            funnelTabs.addEventListener('click', function(e){
+                const tabButton = e.target.closest('.tab-button');
+                if(tabButton){
+                    document.querySelectorAll('#funnel-tabs .tab-button').forEach(btn => btn.classList.remove('active'));
+                    tabButton.classList.add('active');
+                    renderFlow(tabButton.dataset.flow);
                 }
             });
 
+            // Initial render
+            renderFlow('sales');
         });
     </script>
 </body>
