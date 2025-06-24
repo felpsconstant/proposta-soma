@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="pt-BR"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Proposta de Reestruturação do CRM Soma&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Chosen Palette: "V4 Company Brand (Black, White, Red)" --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Application Structure Plan: A top-down, single-page application that guides the user through a narrative flow. It starts with the diagnosis of the problem, presents the core solution (the interactive funnel), details the strategic tools that support it, covers the necessary technical upgrades, and ends with a clear action plan. This structure was chosen to build a compelling case step-by-step, moving from 'why' to 'what' and 'how', making the complex proposal easily digestible and visually engaging. The interactive funnel is the centerpiece, allowing users to actively explore the new process rather than passively reading about it. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Visualization &amp; Content Choices:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>- Report Info: Chaotic old process vs. proposed new one. -&gt; Goal: Organize &amp; Explain. -&gt; Viz/Method: Interactive HTML/CSS process flowchart. -&gt; Interaction: User clicks on a stage to reveal detailed information. -&gt; Justification: Transforms a static table into an engaging, self-paced exploratory tool. -&gt; Library/Method: Vanilla JS + Tailwind.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>- Report Info: Various operational problems (bottlenecks, bad chatbot). -&gt; Goal: Inform. -&gt; Viz/Method: Grid of cards with icons. -&gt; Interaction: Static but visually organized. -&gt; Justification: Breaks down complex problems into scannable, easy-to-understand points. -&gt; Library/Method: Tailwind CSS.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>- Report Info: Need for data tracking (Aging Leads). -&gt; Goal: Demonstrate. -&gt; Viz/Method: Bar chart mockup. -&gt; Interaction: Hover tooltips. -&gt; Justification: Provides a tangible visual example of the data-driven benefits of the new system. -&gt; Library/Method: Chart.js.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>- Report Info: Strategic optimizations (Bot, Nurturing, Governance). -&gt; Goal: Organize. -&gt; Viz/Method: Tabbed interface. -&gt; Interaction: Click to switch content. -&gt; Justification: Neatly organizes multiple related topics without cluttering the page. -&gt; Library/Method: Vanilla JS + Tailwind.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #000000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #e5e7eb; /* gray-200 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.accent-color {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ef4444; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.accent-bg {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ef4444; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.accent-border {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #ef4444; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.smooth-scroll {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scroll-behavior: smooth;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.funnel-step {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.funnel-step.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-5px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #ef4444; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #1f2937; /* gray-800 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-button.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom-color: #ef4444; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.chart-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 350px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 700px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="smooth-scroll"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-black/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;nav class="container mx-auto px-6 py-4 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-xl font-bold text-white"&gt;Proposta CRM &lt;span class="accent-color"&gt;Soma&lt;/span&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex space-x-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#diagnostico" class="text-gray-300 hover:accent-color"&gt;Diagnóstico&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#solucao" class="text-gray-300 hover:accent-color"&gt;A Solução&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#ferramentas" class="text-gray-300 hover:accent-color"&gt;Otimizações&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#whatsapp" class="text-gray-300 hover:accent-color"&gt;WhatsApp API&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#plano-acao" class="text-gray-300 hover:accent-color"&gt;Plano de Ação&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="container mx-auto px-6 py-8 md:py-12"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Hero Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="text-center mb-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-4xl md:text-5xl font-bold section-title mb-4"&gt;Nova Estrutura Estratégica do CRM Soma&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto"&gt;Uma proposta de otimização de processos para destravar o potencial de vendas e maximizar resultados.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Diagnóstico Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="diagnostico" class="mb-20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-3xl font-bold text-center section-title mb-2"&gt;O Desafio Atual&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto"&gt;Com base no nosso diagnóstico, a estrutura atual do Kommo não atende às necessidades da operação. Isso gera um fluxo reativo e uma série de gargalos que impedem o crescimento.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Funis Múltiplos e Confusos&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;Mais de 80 etapas, nomenclaturas ruins e uma jornada de cliente quebrada entre múltiplos funis causam desorganização e perda de visão do processo.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Chatbot de Entrada Ineficaz&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;Um fluxo de qualificação longo e com lógica travada resulta em um alto índice de abandono, deixando leads parados no início da jornada.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Gargalo na Análise do SDR&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;O alto volume de leads gera demora no primeiro atendimento, abrindo uma janela de oportunidade crucial para a concorrência.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Perda de Leads Quentes&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;Leads com aprovação de crédito que param de responder são frequentemente esquecidos e perdidos, representando um grande custo de oportunidade.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Nutrição de Leads Deficiente&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;A cadência de mensagens não possui lógica ou segmentação, enviando comunicações genéricas até para leads sem chance de aprovação.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-gray-900 p-6 rounded-lg border-l-4 border-red-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 class="font-bold text-lg mb-2 text-white"&gt;Falta de Acompanhamento&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400 text-sm"&gt;A desorganização atual impede a análise de métricas vitais como o desempenho de vendedores e o tempo de permanência de leads em cada etapa (aging).&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Solução: Funil Único --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="solucao" class="mb-20 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-3xl font-bold section-title mb-2"&gt;A Solução: Funil Único e Otimizado&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto"&gt;Propomos um caminho claro, unificado e rastreável da qualificação ao pós-venda. Clique em cada etapa para ver os detalhes.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="relative overflow-x-auto pb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="funnel-container" class="flex items-center space-x-2 md:space-x-0 md:grid md:grid-cols-10 min-w-max md:min-w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Steps will be injected here by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="funnel-details" class="mt-8 text-left bg-gray-900 p-8 rounded-lg min-h-[200px] border-t-4 accent-border"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Details will be injected here by JS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Otimizações Estratégicas --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="ferramentas" class="mb-20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-3xl font-bold text-center section-title mb-2"&gt;Otimizações Estratégicas&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto"&gt;Além do novo funil, implementaremos um conjunto de ferramentas e processos para acelerar a eficiência e a inteligência de dados.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="border-b border-gray-700 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;nav class="-mb-px flex justify-center space-x-6 md:space-x-8" aria-label="Tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button data-tab="tab1" class="tab-button active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Automação e Cadência</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button data-tab="tab2" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-400 hover:border-gray-600"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Dados e Governança</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="tab1" class="tab-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-gray-900 p-6 rounded-lg border border-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-lg mb-2 accent-color"&gt;Bot de Entrada Refatorado&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-gray-400"&gt;Um chatbot curto e direto, focado em 5 passos com respostas rápidas para capturar informações essenciais (tipo de refinanciamento, valor, renda, CPF) sem cansar o usuário.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-gray-900 p-6 rounded-lg border border-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-lg mb-2 accent-color"&gt;Follow-up Inteligente&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-gray-400"&gt;Cadências automáticas para reengajar leads quentes inativos (D+1, D+3, D+5) e para manter contato com leads reprovados, sugerindo um retorno futuro.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-gray-900 p-6 rounded-lg border border-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="font-bold text-lg mb-2 accent-color"&gt;Segmentação de Intenção&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-gray-400"&gt;Inclusão de "perguntas disfarçadas de intenção" no bot para separar curiosos de compradores reais (Ex: "Já analisa propostas de outras empresas?").&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="tab2" class="tab-content hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid md:grid-cols-2 gap-8 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;h4 class="font-bold text-lg mb-4 accent-color"&gt;Dashboards de Acompanhamento&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;p class="text-gray-400 mb-4"&gt;Criaremos painéis para monitorar o tempo de permanência dos leads em cada etapa (aging), identificando visualmente onde os processos estão travando e precisam de atenção.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;h4 class="font-bold text-lg mb-4 accent-color"&gt;Padronização e Governança&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;ul class="text-gray-400 space-y-2 list-disc list-inside"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Uso de prefixos em campos para organização (RF_, CLI_, FIN_).&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Criação de um Dicionário de Campos para consulta.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Reuniões quinzenais de auditoria e revisão contínua.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-gray-900 p-6 rounded-lg border border-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 class="text-center text-white font-semibold mb-4"&gt;Exemplo: Dashboard de Leads Parados&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="chart-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;canvas id="agingChart"&gt;&lt;/canvas&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- WhatsApp API --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="whatsapp" class="mb-20 bg-gray-900/50 -mx-6 px-6 py-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-3xl font-bold text-center section-title mb-2"&gt;Projeto Essencial: WhatsApp API&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto"&gt;Para profissionalizar a comunicação, garantir a estabilidade e ter total controle sobre o principal canal de vendas, a migração para a API oficial do WhatsApp é fundamental.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl"&gt;✓&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg mb-1 text-white"&gt;Credibilidade&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-400 text-sm"&gt;Número oficial com selo de verificação da Meta, transmitindo segurança.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl"&gt;⇄&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg mb-1 text-white"&gt;Escalabilidade&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-400 text-sm"&gt;Múltiplos vendedores atendendo no mesmo número, sem instabilidade.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl"&gt;📈&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg mb-1 text-white"&gt;Controle Total&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-400 text-sm"&gt;Rastreabilidade de atendimentos por vendedor para análise de performance.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="accent-bg text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-3xl"&gt;🛡️&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg mb-1 text-white"&gt;Segurança&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-400 text-sm"&gt;Conformidade com políticas e LGPD, evitando bloqueios inesperados.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-12 text-center bg-gray-900 max-w-sm mx-auto p-6 rounded-lg border border-gray-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400"&gt;Investimento Estimado&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-4xl font-bold section-title my-2"&gt;&lt;span class="accent-color"&gt;R$ 983,95&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-gray-400"&gt;mensais&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-500 mt-4"&gt;Baseado no volume atual de leads e conversas de marketing/serviço.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Plano de Ação --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="plano-acao" class="mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-3xl font-bold text-center section-title mb-2"&gt;Plano de Ação&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto"&gt;Estes são os próximos passos para colocar a nova estrutura em operação e começar a colher os resultados.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="max-w-2xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;ol class="relative border-l border-gray-700"&gt; <span class="Apple-converted-space">                 </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="mb-10 ml-6"&gt; <span class="Apple-converted-space">           </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"&gt;&lt;span class="text-red-300 text-xs font-bold"&gt;1&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="flex items-center mb-1 text-lg font-semibold text-white"&gt;Aprovação da Proposta&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="block mb-2 text-sm font-normal leading-none text-gray-500"&gt;Validação do plano de reestruturação estratégica.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="mb-10 ml-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"&gt;&lt;span class="text-red-300 text-xs font-bold"&gt;2&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="mb-1 text-lg font-semibold text-white"&gt;Início da Implementação&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-base font-normal text-gray-400"&gt;Configuração do novo funil, etapas e automações no Kommo.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="mb-10 ml-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"&gt;&lt;span class="text-red-300 text-xs font-bold"&gt;3&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="mb-1 text-lg font-semibold text-white"&gt;Desenvolvimento do Novo Bot&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-base font-normal text-gray-400"&gt;Criação e teste do chatbot de qualificação otimizado.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;li class="mb-10 ml-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"&gt;&lt;span class="text-red-300 text-xs font-bold"&gt;4&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="mb-1 text-lg font-semibold text-white"&gt;Setup da WhatsApp API&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-base font-normal text-gray-400"&gt;Contratação e configuração da API oficial.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li class="ml-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute flex items-center justify-center w-6 h-6 bg-red-900 rounded-full -left-3 ring-8 ring-black"&gt;&lt;span class="text-red-300 text-xs font-bold"&gt;5&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="mb-1 text-lg font-semibold text-white"&gt;Governança e Go-Live&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-base font-normal text-gray-400"&gt;Agendamento da primeira reunião quinzenal de auditoria e início da operação no novo modelo.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ol&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="bg-black border-t border-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-6 py-8 text-center text-gray-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-2xl font-bold section-title mb-4"&gt;Obrigado!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="mb-4"&gt;Estamos à disposição para discutir a proposta e responder a quaisquer dúvidas.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="font-semibold text-white"&gt;Felipe Constantino/V4 Company&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-sm"&gt;Analista de CRM&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-sm"&gt;felipe.constantino@v4company.com&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function () {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Funnel Data ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const funnelData = [</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '01', title: 'Pré-Qualificado', responsible: 'Automação (Bot)', desc: 'Lead com score ≥ 5.000 e dados mínimos preenchidos via Typeform e bot. Automação para tag "Pré-Qualificado" e criação no Kommo.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '02', title: 'Em Análise de Crédito', responsible: 'SDR', desc: 'SDR verifica aprovações em bancos prioritários. O SLA ideal para esta etapa é de no máximo 1 hora para garantir agilidade.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '03', title: 'Aguardando Retorno', responsible: 'SDR', desc: 'SDR aguarda respostas dos bancos. Alertas automáticos são disparados se o lead ficar parado por mais de 24 horas.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '04', title: 'Aprovado p/ Comercial', responsible: 'SDR', desc: 'SDR libera leads com pré-aprovação para o time comercial. A transição deve ser imediata.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '05', title: 'Contato Comercial', responsible: 'Comercial', desc: 'Time comercial inicia a negociação, apresenta a proposta de valor e registra todas as objeções do cliente no CRM.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '06', title: 'Documentação', responsible: 'Comercial', desc: 'Comercial solicita, orienta e gerencia a coleta da documentação necessária para a formalização do contrato.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '07', title: 'Contrato / Vistoria', responsible: 'Comercial / Banco', desc: 'Cliente e banco realizam a vistoria do veículo e finalizam a assinatura do contrato.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '08', title: 'Desembolso', responsible: 'Comercial', desc: 'Confirmação da liberação do valor na conta do cliente. O lead é então encaminhado para o fluxo de pós-venda.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '09', title: 'Pós-venda', responsible: 'Sucesso do Cliente', desc: 'Envio de pesquisa de satisfação, ativação do programa de indicação e oferta de suporte contínuo.' },</p>
+<p class="p1"><span class="Apple-converted-space">                </span>{ id: '10', title: 'Perda', responsible: 'Todos', desc: 'Categorização detalhada do motivo de perda para análise estratégica (Ex: Reprovado, Cliente desistiu, Sumiu, Concorrência).' }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const funnelContainer = document.getElementById('funnel-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const funnelDetails = document.getElementById('funnel-details');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Render Funnel Steps ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let funnelHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>funnelData.forEach((step, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const isLast = index === funnelData.length - 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const textColor = isLast ? 'accent-color' : 'text-white';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>funnelHTML += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-shrink-0 w-32 md:w-auto md:col-span-1 flex flex-col items-center relative"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div data-id="${step.id}" class="funnel-step cursor-pointer bg-gray-900 border-2 border-gray-700 rounded-lg w-full h-24 flex flex-col justify-center items-center text-center p-2 hover:border-red-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="font-bold text-sm ${textColor}"&gt;${step.id}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-xs font-semibold text-gray-300"&gt;${step.title}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${!isLast ? '&lt;div class="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-gray-600 font-thin text-2xl"&gt;&amp;rarr;&lt;/div&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>funnelContainer.innerHTML = funnelHTML;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Funnel Interaction Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function updateDetails(id) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const step = funnelData.find(s =&gt; s.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (step) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>funnelDetails.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-2xl font-bold section-title mb-2"&gt;${step.id}. ${step.title}&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-gray-400 mb-4"&gt;&lt;strong&gt;Responsável:&lt;/strong&gt; ${step.responsible}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-300"&gt;${step.desc}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>funnelContainer.addEventListener('click', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const stepElement = e.target.closest('.funnel-step');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (stepElement) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const id = stepElement.dataset.id;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.querySelectorAll('.funnel-step').forEach(el =&gt; el.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>stepElement.classList.add('active');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>updateDetails(id);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelector('.funnel-step').click();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Tab Interaction Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tabButtons = document.querySelectorAll('.tab-button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tabContents = document.querySelectorAll('.tab-content');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>tabButtons.forEach(button =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tabButtons.forEach(btn =&gt; btn.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>tabContents.forEach(content =&gt; content.classList.add('hidden'));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>button.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById(button.dataset.tab).classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Chart.js Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ctx = document.getElementById('agingChart').getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const chartTextColor = '#e5e7eb';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const chartGridColor = 'rgba(229, 231, 235, 0.2)';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>new Chart(ctx, {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'bar',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>data: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>labels: ['Contato Comercial', 'Documentação', 'Aguardando Retorno', 'Análise Crédito'],</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>datasets: [{</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>label: 'Nº de Leads Parados (&gt;3 dias)',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>data: [22, 14, 9, 5],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>backgroundColor: 'rgba(239, 68, 68, 0.6)', // red-500 with alpha</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>borderColor: 'rgb(239, 68, 68)', // red-500</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>borderWidth: 1</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}]</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>responsive: true,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>maintainAspectRatio: false,</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scales: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>y: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>beginAtZero: true,</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>ticks: { color: chartTextColor },</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>grid: { color: chartGridColor }</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>x: {</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>ticks: { color: chartTextColor },</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>grid: { display: false }</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>plugins: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>legend: {</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>display: false</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>tooltip: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>backgroundColor: '#1f2937',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>titleColor: '#ffffff',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>bodyColor: '#e5e7eb'</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>title: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>display: false</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
